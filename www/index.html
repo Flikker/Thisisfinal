@@ -51,44 +51,7 @@ $( document ).bind( "mobileinit", function() {
         
         
         
-<script>
-function onDeviceReady() {
-    $('#listsearch').bind('pageshow', function () {
-        $.get('http://revolutioninteractivevideo.com/wp-content/uploads/panos/augmentedrealityheritage/www/searchy.php', function (data) {
-      $(this).find('div[data-role="content"]').append(data);
-  });
-     });
-}
-$(document).ready(function() {
-    document.addEventListener("deviceready", onDeviceReady, true);       
-});
-</script>
-        
-        
-        
-       <script>
-// I've changed to pagebeforecreate as was multiplying results with pagebeforeshow. check if it refreshes list when reopen app
-$(document).on('pagebeforeshow', '#searchpage', function(){
-    var output = $('#listsearch');
-    $.ajax({
-        url: 'http://revolutioninteractivevideo.com/wp-content/uploads/panos/augmentedrealityheritage/www/searchy.php',
-        dataType: 'jsonp',
-        jsonp: 'jsoncallback',
-        timeout: 10000,
-        success: function(data, status){
-            $.each(data, function(i,item){
-                var place = '<li> <a href="' +item.serverlocation+  '" style="text-align:center;"><img class="ui-content" src="' +item.picture+ '">' +item.name+ '<br>' +item.address+ '</a><a href="#download" data-transition="pop" data-icon="gear">Download tour</a>    </li>';
-                output.append(place);
-            });
-            $('#listsearch').listview('refresh');
-        },
-        error: function(){
-            output.text('There was an error loading the data.');
-        }
-    });
-});     
-</script>
-        
+
 
         
         
